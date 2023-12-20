@@ -62,6 +62,9 @@ target/
 # pyenv
 .python-version
 
+# excuse the tailwind css files dir
+!tailwind/staticfiles/
+
 
 
 # Environments
