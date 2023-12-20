@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CODELANCE LANCE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="mx-5">
+    <div>
+      <p class="hidden py-5 underline">This code expires in {{ expires }} days.</p>
+    </div>
+    <div>
+      <textread class="py-5" id="none">{{ code_display | safe }}</textread>
+    </div>
+  </div>
+</body>
+</html>

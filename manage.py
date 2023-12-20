@@ -24,8 +24,8 @@ if __name__ == "__main__":
         raise
 
     # This allows easy placement of apps within the interior
-    # code_bin directory.
+    # bins directory.
     current_path = Path(__file__).parent.resolve()
-    sys.path.append(str(current_path / "code_bin"))
+    sys.path.append(str(current_path / "bins"))
 
     execute_from_command_line(sys.argv)

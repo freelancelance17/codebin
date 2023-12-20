@@ -45,7 +45,7 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./code_bin:/app/code_bin:z
+      - ./bins:/app/bins:z
     ports:
       - '9000:9000'
     command: /start-docs
