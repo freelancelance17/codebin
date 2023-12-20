@@ -1,52 +1,19 @@
 # code bin
 
-A quick and secure way to share information.
+A very quick pastebin replacement for sharing code/information with others easily and without worrying what pastebin or (zoom, etc.) is doing with your information. I deploy this to a t2.micro ec2 instance ($62.00 a year w/ cost savings plan in 2023).
 
-[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+### Change your domain 
 
-## Settings
+In order to deploy this application you have to alter the domain settings to the domain you intend to use for this site. Of course this should be included in the environment but I haven't gotten to that yet. That domain is in a few places, but most importantly:
 
-Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
+compose/production/traefik/traefik.yml
+config/settings/base.py
+config/settings/production.py
 
-## Basic Commands
-
-### Setting Up Your Users
-
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
-- To create a **superuser account**, use this command:
-
-      $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
-
-### Type checks
-
-Running type checks with mypy:
-
-    $ mypy code_bin
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report:
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-#### Running tests with pytest
-
-    $ pytest
-
-### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
-
-## Deployment
-
-The following details how to deploy this application.
+or simply grep for code.freelancelance.com
 
 ### Docker
+
+This application can be built and deployed with docker quickly. 
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).

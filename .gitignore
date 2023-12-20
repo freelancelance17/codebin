@@ -65,6 +65,8 @@ target/
 # excuse the tailwind css files dir
 !tailwind/staticfiles/
 
+.idea/
+
 
 
 # Environments
