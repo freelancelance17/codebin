@@ -35,7 +35,27 @@ def note(request, uuid):
                       {
                           'code': code_bin.code,
                           'expires': code_bin.expiry_policy,
-                          'code_display': highlight_code(code_bin.code, 'python'),
+                          'code_display': python_code(code_bin.code, 'python'),
+                          'code_bins': Bins.objects.all()
+                      }
+                      )
+    else:
+        return HttpResponse('Sorry this bin no longer exists.')
+
+def story(request, uuid):
+    try:
+        code_bin = Bins.objects.get(uuid=uuid)
+    except Bins.DoesNotExist:
+        return HttpResponse('Site error: no bin by that uuid.')
+
+    expired = False if code_bin.expires_on > datetime.now(pytz.timezone('UTC')) else True
+
+    if not expired:
+        return render(request, 'bins/story.html',
+                      {
+                          'code': code_bin.code,
+                          'expires': code_bin.expiry_policy,
+                          'code_display': text_code(code_bin.code),
                           'code_bins': Bins.objects.all()
                       }
                       )
@@ -48,11 +68,15 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 
-def highlight_code(code, language):
+def python_code(code, language):
     lexer = get_lexer_by_name(language, stripall=True)
     formatter = HtmlFormatter(linenos=False, cssclass="source")
     return highlight(code, lexer, formatter)
 
+def text_code(code, language='text'):
+    lexer = get_lexer_by_name(language, stripall=True)
+    formatter = HtmlFormatter(nowrap=False)
+    return highlight(code, lexer, formatter)
 
 def return_all_unexpired():
 

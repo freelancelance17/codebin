@@ -7,11 +7,12 @@ from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
-from bins.views import create_note, note
+from bins.views import create_note, note, story
 
 urlpatterns = [
     path("", create_note, name="form"),
     path("note/<uuid>", note, name="note"),
+    path("story/<uuid>", story, name="story"),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
